@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="pt/c40task/l05wumpus/" kind="src" path=""/>
+	<classpathentry kind="src" path="pt/c40task/l05wumpus"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
