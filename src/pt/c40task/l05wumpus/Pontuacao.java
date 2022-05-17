@@ -9,7 +9,5 @@ public class Pontuacao {
 	
 	public static void adicionaPontos(int x) {
 		pontos += x;
-	}
-	
-	
+	}	
 }
