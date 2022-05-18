@@ -3,6 +3,7 @@ package pt.c40task.l05wumpus;
 public class Heroi extends Componente {
 	private int quantFlecha = 1;
 	private int preparado = 0;
+	private int temOuro = 0;
 	
 	Heroi(int x, int y, char tipo) {
 		super(x, y, tipo);
@@ -37,11 +38,26 @@ public class Heroi extends Componente {
 	}
 	
 	public void captura(Caverna cave) {
-		cave.capturaOuro(this.x, this.y);
+		cave.capturaOuro(this.x, this.y, this);
 	}
 	
 	public void tiraFlecha() {
 		this.preparado = 0;
 		Pontuacao.adicionaPontos(-100);
+	}
+	
+	public int[] getPosicaoHeroi() {
+		int x[] = new int[2];
+		x[0] = this.x;
+		x[1] = this.y;
+		return x;
+	}
+	
+	public void pegouOuro() {
+		this.temOuro = 1;
+	}
+	
+	public int getOuro() {
+		return this.temOuro;
 	}
 }

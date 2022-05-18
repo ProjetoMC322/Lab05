@@ -1,4 +1,5 @@
 package pt.c40task.l05wumpus;
+import java.util.Scanner;
 
 public class Controle {
 	public static int gameOver = 0;
@@ -25,23 +26,39 @@ public class Controle {
 							break;
 						};
 				}
-				if (movimento.substring(i, i+1).equalsIgnoreCase("k")) {
+				else if (movimento.substring(i, i+1).equalsIgnoreCase("k")) {
 					heroi.equipaFlecha();
 					caverna.mostraJogo(this.tk, heroi.getPosicaoHeroi()[0], heroi.getPosicaoHeroi()[1], gameOver);
 				}
-				if (movimento.substring(i, i+1).equalsIgnoreCase("c")) {
+				else if (movimento.substring(i, i+1).equalsIgnoreCase("c")) {
 					heroi.captura(caverna);
 					caverna.mostraJogo(this.tk, heroi.getPosicaoHeroi()[0], heroi.getPosicaoHeroi()[1], gameOver);
 				}
-				if (movimento.substring(i, i+1).equalsIgnoreCase("q")) {
+				else if (movimento.substring(i, i+1).equalsIgnoreCase("q")) {
 					gameOver = 2;
 					caverna.mostraJogo(this.tk, heroi.getPosicaoHeroi()[0], heroi.getPosicaoHeroi()[1], gameOver);
 					break;
+				} else {
+					System.out.println("Tecla invalida!");
 				}
+				
 			}else{
 				break;
 			}
 		}
-		//termina no teclado
-	}	
+		if (gameOver == 0) {
+			System.out.println("Acabaram os comandos, continue pelo teclado...");
+			leTeclado();
+		}
+}	
+
+	
+	public void leTeclado() {
+		Scanner keyboard = new Scanner(System.in);
+		String command = keyboard.nextLine();
+		leArquivo(command);
+		keyboard.close();
+	
+	}
+
 }

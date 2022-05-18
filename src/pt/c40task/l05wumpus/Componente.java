@@ -10,7 +10,7 @@ public abstract class Componente {
 		this.tipo = tipo;
 	}
 	
-	public void getChar(){
+	public char getChar(){
 		return this.tipo;
 	}
 	

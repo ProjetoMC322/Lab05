@@ -74,7 +74,7 @@ public class Toolkit {
       return v;
    }
    
-   public void writeBoard(char board[][], int score, char status){
+   public void writeBoard(char board[][], int score, char status, String nome){
       try {
          if (!firstBoard)
             outputStr.println("=====");
@@ -83,8 +83,9 @@ public class Toolkit {
                outputStr.print(board[i][j]);
             outputStr.println();
          }
-         outputStr.println("score: " + score);
-         outputStr.println("status: " + status);
+         outputStr.println("Player: " + nome);
+         outputStr.println("Score: " + score);
+         outputStr.println("Status: " + status);
          firstBoard = false;
       } catch(Exception erro){
          erro.printStackTrace();

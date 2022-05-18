@@ -1,10 +1,14 @@
 package pt.c40task.l05wumpus;
 
 public class Caverna {
+	
 	Sala caverna[][] = new Sala[4][4];
-	for(int i = 0; i<4; i++){
-		for(int j = 0; j<4; j++){
-			sala[i][j] =  new Sala(i, j);
+		
+	Caverna() {
+		for(int i = 0; i<4; i++){
+			for(int j = 0; j<4; j++){
+				this.caverna[i][j] =  new Sala(i, j);
+			}
 		}
 	}
 	
@@ -13,11 +17,13 @@ public class Caverna {
 	}
 	
 	public void associaSala(Componente c, int x, int y) {
-		caverna[x][y].adicionaComponente(c);
+		if((x < 4)&&(y < 4)&&(x >= 0)&&(y >= 0)) {
+			caverna[x][y].adicionaComponente(c);
+		}
 	}
 	
-	public void capturaOuro(int x, int y) {
-		caverna[x][y].capOuro();
+	public void capturaOuro(int x, int y, Heroi p) {
+		caverna[x][y].capOuro(p);
 	}
 	
 	public void moveHeroi(int xa, int ya, int xd, int yd, Heroi p) {
@@ -30,44 +36,37 @@ public class Caverna {
 	}
 
 	public void mostraJogo(Toolkit tk, int xh, int yh, int gameOver){
+		char jogo[][] = new char[4][4];
 		if(gameOver == 0){
 			for(int i = 0; i<4; i++){
 				for(int j = 0; j<4; j++){
 					if(i != xh || j != yh){
-						System.out.print(sala[i][j].mostraSala(0));
+						jogo[i][j] = caverna[i][j].mostraSala(0);
 					}else{
-						System.out.print(sala[i][j].mostraSala(1));
+						jogo[i][j] = caverna[i][j].mostraSala(1);
 					}
-				
 				}
-				System.out.println();
 			}
-			System.out.println("Player: Sting");
-			System.out.println("Pontuacao: " + Pontuacao.getPontos());
+			tk.writeBoard(jogo, Pontuacao.getPontos(), 'x', Pontuacao.getNome());
 		}else{
 			for(int i = 0; i<4; i++){
 				for(int j = 0; j<4; j++){
-					System.out.print(sala[i][j].mostraSala(0));
+					jogo[i][j] = caverna[i][j].mostraSala(0);
 				}
-				System.out.println();
 			}
 		}
-		else if(gameOver == -1){
-			System.out.println("Player: " + Pontuacao.getNome());
-			System.out.println("Pontuacao: " + Pontuacao.getPontos());
+		if(gameOver == -1){
+			tk.writeBoard(jogo, Pontuacao.getPontos(), 'w', Pontuacao.getNome());
 			System.out.println("Parabens!!! Voce venceu!!! =D");
 		}
 		else if(gameOver == 1){
-			System.out.println("Player: " + Pontuacao.getNome());
-			System.out.println("Pontuacao: " + Pontuacao.getPontos());
+			tk.writeBoard(jogo, Pontuacao.getPontos(), 'n', Pontuacao.getNome());
 			System.out.println("Voce perdeu =(");
 		}
 		else if(gameOver == 2){
-			System.out.println("Player: " + Pontuacao.getNome());
-			System.out.println("Pontuacao: " + Pontuacao.getPontos());
+			tk.writeBoard(jogo, Pontuacao.getPontos(), 'n', Pontuacao.getNome());
 			System.out.println("Volte sempre! ;)");
 		}
 	}
-
-	
 }
+
