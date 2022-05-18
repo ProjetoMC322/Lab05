@@ -4,10 +4,24 @@ import java.util.Random;
 public class Sala {
 	int x, y,  revelada = 0;
 	Componente componentes[] = new Componente[4];
+	Sala (int x, int y){
+		this.x = x;
+		this.y = y;
+		if(x == 0 && y == 0){
+			this.revelada = 1;
+		}
+	}
 	public void adicionaComponente(Componente novo) {
+		if (novo instanceof Heroi){
+			if(this.revelada  == 1){
+				componentes[0]= novo;
+			}else{
+				System.out.println("Erro: Heroi nao esta na primeira sala!");
+			}
+		}
 		if (novo instanceof Wumpus || novo instanceof Buraco || novo instanceof Ouro) {
 			if (componentes[0] instanceof Wumpus || componentes[0] instanceof Buraco || componentes[0] instanceof Ouro) {
-				System.out.println("Erro: não se pode colocar dois componentes primários na mesma sala!");
+				System.out.println("Erro: nao se pode colocar dois componentes primarios na mesma sala!");
 			}
 			for(int i = componentes.length; i > 0; i--) {
 				componentes[i] = componentes[i - 1];
@@ -71,7 +85,9 @@ public class Sala {
 					Controle.gameOver = 1;
 				}else {
 					Pontuacao.adicionaPontos(500);
-					System.out.println("Parabéns guerreiro! Wumpus foi derrotado!");
+					System.out.println();
+					System.out.println("Parabens guerreiro! Wumpus foi derrotado!");
+					System.out.println();
 					for(int i = 1; i<componentes.length; i++) {
 						componentes[i-1] = componentes[i];
 					}
@@ -85,6 +101,18 @@ public class Sala {
 		p.tiraFlecha();
 	}
 	
-	
+	public char mostraSala(int heroiNaSala){
+		if(this.revelada == 0){
+			return '-';
+		}else if(heroiNaSala == 0){
+			return componentes[0].getChar();
+		}else{
+			if(componentes[0] instanceof Ouro){
+				return 'O';
+			}else{
+				return 'P';
+			}
+		}
+	}
 	
 }

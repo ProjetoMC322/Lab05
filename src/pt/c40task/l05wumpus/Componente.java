@@ -10,6 +10,10 @@ public abstract class Componente {
 		this.tipo = tipo;
 	}
 	
+	public void getChar(){
+		return this.tipo;
+	}
+	
 	public void add(Caverna caverna) {
 		return ;
 	}
