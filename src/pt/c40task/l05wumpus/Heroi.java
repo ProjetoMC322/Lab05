@@ -4,9 +4,15 @@ public class Heroi extends Componente {
 	private int quantFlecha = 1;
 	private int preparado = 0;
 	private int temOuro = 0;
+	private static int temFedor = 0;
+	private static int temBrisa = 0;
 	
 	Heroi(int x, int y, char tipo) {
 		super(x, y, tipo);
+	}
+	
+	public void add(Caverna caverna) {
+		caverna.associaSala(this, x, y);
 	}
 	
 	public void move(Caverna cave, String movimento) {
@@ -73,5 +79,21 @@ public class Heroi extends Componente {
 	
 	public int getOuro() {
 		return this.temOuro;
+	}
+	
+	public static void achouBrisa(int x) {
+		temBrisa = x;
+	}
+	
+	public static int getBrisa() {
+		return temBrisa;
+	}
+	
+	public static void achouFedor(int x) {
+		temFedor = x;
+	}
+	
+	public static int getFedor() {
+		return temFedor;
 	}
 }

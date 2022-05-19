@@ -51,8 +51,10 @@ public class Caverna {
 				System.out.println("");
 			}
 			System.out.println(Pontuacao.getPontos());
-			System.out.println("\n");
-			tk.writeBoard(jogo, Pontuacao.getPontos(), 'x', Pontuacao.getNome());
+			tk.writeBoard(jogo, Pontuacao.getPontos(), 'P', Pontuacao.getNome());
+			System.out.println("Tem fedor na sala?" + ((Heroi.getFedor() == 1) ? " SIM!" : " NAO!"));
+			System.out.println("Tem brisa na sala?" + ((Heroi.getBrisa() == 1) ? " SIM!" : " NAO!"));
+			System.out.println("");
 		}else{
 			for(int i = 0; i<4; i++){
 				for(int j = 0; j<4; j++){
@@ -65,11 +67,11 @@ public class Caverna {
 			System.out.println("\n");
 		}
 		if(gameOver == -1){
-			tk.writeBoard(jogo, Pontuacao.getPontos(), 'w', Pontuacao.getNome());
+			tk.writeBoard(jogo, Pontuacao.getPontos(), 'W', Pontuacao.getNome());
 			System.out.println("Parabens!!! Voce venceu!!! =D");
 		}
 		else if(gameOver == 1){
-			tk.writeBoard(jogo, Pontuacao.getPontos(), 'n', Pontuacao.getNome());
+			tk.writeBoard(jogo, Pontuacao.getPontos(), 'L', Pontuacao.getNome());
 			System.out.println("Voce perdeu =(");
 		}
 		else if(gameOver == 2){

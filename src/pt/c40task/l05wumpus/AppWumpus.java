@@ -1,4 +1,5 @@
 package pt.c40task.l05wumpus;
+import java.util.Scanner;
 
 public class AppWumpus {
    private static Heroi heroi;
@@ -26,7 +27,16 @@ public class AppWumpus {
       Controle controlador = new Controle(heroi, caverna, tk);
       caverna.mostraJogo(tk, 0, 0, 0);
       String movements = tk.retrieveMovements();
-      controlador.leTeclado();
+      if(movements.equalsIgnoreCase("")) {
+    	  System.out.println("Utilizando teclado, entre com o nome do seu jogador:");
+    	  Scanner keyboard = new Scanner(System.in);
+  		  Pontuacao.setNome(keyboard.nextLine());
+  		  System.out.println("Nome gravado! Insira os comandos:");
+    	  controlador.leTeclado();
+      }else {
+    	  controlador.leArquivo(movements);
+      }
+      
       
       
       
