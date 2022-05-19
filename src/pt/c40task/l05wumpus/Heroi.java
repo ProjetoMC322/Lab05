@@ -12,15 +12,27 @@ public class Heroi extends Componente {
 	public void move(Caverna cave, String movimento) {
 		if (movimento.equalsIgnoreCase("w")) {
 			cave.moveHeroi(this.x, this.y, this.x - 1, this.y, this);
+			if(this.x > 0) {
+				this.x--;
+			}
 		}
 		if (movimento.equalsIgnoreCase("a")) {
 			cave.moveHeroi(this.x, this.y, this.x, this.y - 1, this);
+			if(this.y > 0) {
+				this.y--;
+			}
 		}
 		if (movimento.equalsIgnoreCase("s")) {
 			cave.moveHeroi(this.x, this.y, this.x + 1, this.y, this);
+			if(this.x < 3) {
+				this.x++;
+			}
 		}
 		if (movimento.equalsIgnoreCase("d")) {
 			cave.moveHeroi(this.x, this.y, this.x, this.y + 1, this);
+			if(this.y < 3) {
+				this.y++;
+			}
 		}
 	}
 	
@@ -42,8 +54,10 @@ public class Heroi extends Componente {
 	}
 	
 	public void tiraFlecha() {
-		this.preparado = 0;
-		Pontuacao.adicionaPontos(-100);
+		if(this.preparado == 1) {
+			this.preparado = 0;
+			Pontuacao.adicionaPontos(-100);
+		}
 	}
 	
 	public int[] getPosicaoHeroi() {

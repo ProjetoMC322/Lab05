@@ -24,7 +24,7 @@ public class AppWumpus {
       caverna = montador.montaCaverna(cave);
       Controle controlador = new Controle(heroi, caverna, tk);
       String movements = tk.retrieveMovements();
-      controlador.leArquivo(movements);
+      controlador.leTeclado();
       
       
       

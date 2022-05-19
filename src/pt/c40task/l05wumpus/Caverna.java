@@ -42,18 +42,27 @@ public class Caverna {
 				for(int j = 0; j<4; j++){
 					if(i != xh || j != yh){
 						jogo[i][j] = caverna[i][j].mostraSala(0);
+						System.out.print(caverna[i][j].mostraSala(0));
 					}else{
 						jogo[i][j] = caverna[i][j].mostraSala(1);
+						System.out.print(caverna[i][j].mostraSala(1));
 					}
 				}
+				System.out.println("");
 			}
+			System.out.println(Pontuacao.getPontos());
+			System.out.println("\n");
 			tk.writeBoard(jogo, Pontuacao.getPontos(), 'x', Pontuacao.getNome());
 		}else{
 			for(int i = 0; i<4; i++){
 				for(int j = 0; j<4; j++){
 					jogo[i][j] = caverna[i][j].mostraSala(0);
+					System.out.print(caverna[i][j].mostraSala(0));
 				}
+				System.out.println("");
 			}
+			System.out.println(Pontuacao.getPontos());
+			System.out.println("\n");
 		}
 		if(gameOver == -1){
 			tk.writeBoard(jogo, Pontuacao.getPontos(), 'w', Pontuacao.getNome());

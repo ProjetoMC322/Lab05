@@ -2,12 +2,13 @@ package pt.c40task.l05wumpus;
 import java.util.Random;
 
 public class Sala {
-	int x, y,  revelada = 0;
+	int x, y,  revelada = 0, nComponentes;
 	Componente componentes[] = new Componente[4];
 
 	Sala (int x, int y){
 		this.x = x;
 		this.y = y;
+		this.nComponentes = 0;
 		if(x == 0 && y == 0){
 			this.revelada = 1;
 		}
@@ -15,10 +16,10 @@ public class Sala {
 
 	
 	public void adicionaComponente(Componente novo) {
-		System.out.println(componentes.length);
 		if (novo instanceof Heroi){
 			if(this.revelada  == 1){
 				componentes[0]= novo;
+				this.nComponentes++;
 			}else{
 				System.out.println("Erro: Heroi nao esta na primeira sala!");
 			}
@@ -27,60 +28,59 @@ public class Sala {
 			if (componentes[0] instanceof Wumpus || componentes[0] instanceof Buraco || componentes[0] instanceof Ouro) {
 				System.out.println("Erro: nao se pode colocar dois componentes primarios na mesma sala!");
 			}
-			for(int i = componentes.length - 1; i > 0; i--) {
+			for(int i = nComponentes; i > 0; i--) {
 				componentes[i] = componentes[i - 1];
 			}
 			componentes[0] = novo;
+			this.nComponentes++;
 		}
 		if (novo instanceof Fedor) {
-			for(int i = 0; i < componentes.length; i++) {
+			for(int i = 0; i < nComponentes; i++) {
 				if (componentes[i] instanceof Fedor) {
 					return;
 				}
 				if (componentes[i] instanceof Brisa) {
 					componentes[i + 1] = componentes[i];
 					componentes[i] = novo;
+					nComponentes++;
 				} else {
-				componentes[componentes.length] = novo;
+					componentes[nComponentes] = novo;
+					nComponentes++;
 				}
 			}
 			
 		}
 		if (novo instanceof Brisa) {
-			System.out.println(componentes.length);
-			for(int i = 0; i < componentes.length; i++) {
+			for(int i = 0; i < nComponentes; i++) {
 				if (componentes[i] instanceof Brisa) {
-					System.out.println(componentes[i].getChar());
 					return;
-					
 				}
 			}
-			componentes[componentes.length] = novo;
+			componentes[nComponentes] = novo;
+			nComponentes++;
 		}
 	}
 
-	
-	
 	public void capOuro(Heroi p) {
 		if (this.componentes[0] instanceof Ouro) {
-			Componente auxiliar;
-			for (int i = componentes.length; i > 0; i--) {
-				auxiliar = componentes[i];
-				componentes[i - 1] = auxiliar;
+			for (int i = 0; i < nComponentes-1; i++) {
+				componentes[i] = componentes[i+1];
 			}
-			componentes[componentes.length] = null;
+			componentes[nComponentes] = null;
+			nComponentes--;
 			p.pegouOuro();
 		}
 	}
 	
 	public void tiraHeroi() {
-		for(int i = 0; i<componentes.length; i++) {
+		for(int i = 0; i<nComponentes; i++) {
 			if(componentes[i] instanceof Heroi) {
 				Pontuacao.adicionaPontos(-15);
-				for(int j = i+1; j<componentes.length; j++) {
+				for(int j = i+1; j<nComponentes; j++) {
 					componentes[j-1] = componentes[j];
 				}
-				componentes[componentes.length] = null;
+				componentes[nComponentes-1] = null;
+				nComponentes--;
 			}
 		}
 	}
@@ -94,11 +94,11 @@ public class Sala {
 			}
 		}
 		
-		if(componentes.length > 1 && componentes[0] instanceof Buraco) {
+		if(nComponentes > 0 && componentes[0] instanceof Buraco) {
 			Pontuacao.adicionaPontos(-1000);
 			Controle.gameOver = 1;
 		}
-		if(componentes.length > 1 && componentes[0] instanceof Wumpus) {
+		if(nComponentes > 0 && componentes[0] instanceof Wumpus) {
 			if(p.getPreparado() == 1) {
 				Random rand = new Random();
 				int num = rand.nextInt(1);
@@ -110,7 +110,7 @@ public class Sala {
 					System.out.println();
 					System.out.println("Parabens guerreiro! Wumpus foi derrotado!");
 					System.out.println();
-					for(int i = 1; i<componentes.length; i++) {
+					for(int i = 1; i<nComponentes; i++) {
 						componentes[i-1] = componentes[i];
 					}
 				}
@@ -119,7 +119,8 @@ public class Sala {
 				Controle.gameOver = 1;
 			}
 		}
-		componentes[componentes.length] = p;
+		componentes[nComponentes] = p;
+		nComponentes++;
 		p.tiraFlecha();
 	}
 	
@@ -127,7 +128,7 @@ public class Sala {
 		if(this.revelada == 0){
 			return '-';
 		}
-		else if(componentes.length == 0){
+		else if(nComponentes == 0){
 			return '#';
 		}else if(heroiNaSala == 0){
 			return componentes[0].getChar();
@@ -135,6 +136,9 @@ public class Sala {
 			if(componentes[0] instanceof Ouro){
 				return 'O';
 			}else{
+				if(nComponentes > 1) {
+					System.out.println("Essa casa contém: "+ componentes[0].getChar());
+				}
 				return 'P';
 			}
 		}
