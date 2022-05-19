@@ -137,7 +137,7 @@ public class Sala {
 				return 'O';
 			}else{
 				if(nComponentes > 1) {
-					System.out.println("Essa casa contém: "+ componentes[0].getChar());
+					System.out.println("Essa casa contem: "+ componentes[0].getChar());
 				}
 				return 'P';
 			}

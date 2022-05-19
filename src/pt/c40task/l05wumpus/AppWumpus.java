@@ -22,7 +22,9 @@ public class AppWumpus {
       Montador montador = new Montador();
       Caverna caverna = new Caverna();
       caverna = montador.montaCaverna(cave);
+      
       Controle controlador = new Controle(heroi, caverna, tk);
+      caverna.mostraJogo(tk, 0, 0, 0);
       String movements = tk.retrieveMovements();
       controlador.leTeclado();
       
