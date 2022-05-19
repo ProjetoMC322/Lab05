@@ -88,7 +88,7 @@ public class Sala {
 		}
 	}
 
-	public void adicionaHeroi(Heroi p) {
+	public void adicionaHeroi(Heroi p, Caverna cav) {
 		this.revelada = 1;
 		if(x == 0 && y == 0) {
 			if (p.getOuro() == 1) {
@@ -115,6 +115,10 @@ public class Sala {
 					System.out.println("Parabens guerreiro! Wumpus foi derrotado!");
 					System.out.println();
 					removeComponente('W');
+					cav.remove('f', this.x+1, this.y);
+					cav.remove('f', this.x-1, this.y);
+					cav.remove('f', this.x, this.y+1);
+					cav.remove('f', this.x, this.y-1);
 				}
 			}else {
 				Pontuacao.adicionaPontos(-1000);

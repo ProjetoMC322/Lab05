@@ -32,7 +32,13 @@ public class Caverna {
 			return;
 		}
 		caverna[xa][ya].tiraHeroi();
-		caverna[xd][yd].adicionaHeroi(p);
+		caverna[xd][yd].adicionaHeroi(p ,this);
+	}
+	
+	public void remove(char c, int x, int y) {
+		if((x < 4)&&(y < 4)&&(x >= 0)&&(y >= 0)) {
+			caverna[x][y].removeComponente(c);
+		}
 	}
 
 	public void mostraJogo(Toolkit tk, int xh, int yh, int gameOver){
@@ -50,7 +56,7 @@ public class Caverna {
 				}
 				System.out.println("");
 			}
-			System.out.println(Pontuacao.getPontos());
+			System.out.println("Pontos: " + Pontuacao.getPontos());
 			tk.writeBoard(jogo, Pontuacao.getPontos(), 'P', Pontuacao.getNome());
 			System.out.println("Tem fedor na sala?" + ((Heroi.getFedor() == 1) ? " SIM!" : " NAO!"));
 			System.out.println("Tem brisa na sala?" + ((Heroi.getBrisa() == 1) ? " SIM!" : " NAO!"));
@@ -63,7 +69,7 @@ public class Caverna {
 				}
 				System.out.println("");
 			}
-			System.out.println(Pontuacao.getPontos());
+			System.out.println("Pontos: " + Pontuacao.getPontos());
 			System.out.println("\n");
 		}
 		if(gameOver == -1){

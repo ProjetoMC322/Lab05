@@ -4,60 +4,68 @@ P---
 ----
 Player: Alcebiades
 Score: 0
-Status: x
+Status: P
 =====
 #P--
 ----
 ----
 ----
-Player: Joaozin 415
+Player: Alcebiades
 Score: -15
-Status: x
+Status: P
 =====
 ##P-
 ----
 ----
 ----
-Player: Joaozin 415
+Player: Alcebiades
 Score: -30
-Status: x
+Status: P
+=====
+##P-
+----
+----
+----
+Player: Alcebiades
+Score: -30
+Status: P
 =====
 ##b-
 --O-
 ----
 ----
-Player: Joaozin 415
-Score: -45
-Status: x
+Player: Alcebiades
+Score: -145
+Status: P
 =====
 ##b-
 --P-
 ----
 ----
-Player: Joaozin 415
-Score: -45
-Status: x
+Player: Alcebiades
+Score: -145
+Status: P
 =====
 ##P-
 --#-
 ----
 ----
-Player: Joaozin 415
-Score: -60
-Status: x
+Player: Alcebiades
+Score: -160
+Status: P
 =====
 #Pb-
 --#-
 ----
 ----
-Player: Joaozin 415
-Score: -75
-Status: x
+Player: Alcebiades
+Score: -175
+Status: P
 =====
 P#b-
 --#-
 ----
 ----
-Player: Joaozin 415
-Score: 910
-Status: w
+Player: Alcebiades
+Score: 810
+Status: W
