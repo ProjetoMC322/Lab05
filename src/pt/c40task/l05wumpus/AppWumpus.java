@@ -23,17 +23,18 @@ public class AppWumpus {
       Montador montador = new Montador();
       Caverna caverna = new Caverna();
       caverna = montador.montaCaverna(cave);
-      
       Controle controlador = new Controle(heroi, caverna, tk);
-      caverna.mostraJogo(tk, 0, 0, 0);
       String movements = tk.retrieveMovements();
       if(movements.equalsIgnoreCase("")) {
     	  System.out.println("Utilizando teclado, entre com o nome do seu jogador:");
     	  Scanner keyboard = new Scanner(System.in);
   		  Pontuacao.setNome(keyboard.nextLine());
+  		  caverna.mostraJogo(tk, 0, 0, 0);
   		  System.out.println("Nome gravado! Insira os comandos:");
     	  controlador.leTeclado();
       }else {
+    	  System.out.println("Lendo arquivo de comandos...");
+    	  caverna.mostraJogo(tk, 0, 0, 0);
     	  controlador.leArquivo(movements);
       }
       tk.stop();

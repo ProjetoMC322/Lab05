@@ -2,7 +2,7 @@ P---
 ----
 ----
 ----
-Player: Alcebiades
+Player: GABRIELO
 Score: 0
 Status: P
 =====
@@ -10,7 +10,7 @@ Status: P
 ----
 ----
 ----
-Player: Alcebiades
+Player: GABRIELO
 Score: -15
 Status: P
 =====
@@ -18,15 +18,7 @@ Status: P
 ----
 ----
 ----
-Player: Alcebiades
-Score: -30
-Status: P
-=====
-##P-
-----
-----
-----
-Player: Alcebiades
+Player: GABRIELO
 Score: -30
 Status: P
 =====
@@ -34,38 +26,54 @@ Status: P
 --O-
 ----
 ----
-Player: Alcebiades
-Score: -145
+Player: GABRIELO
+Score: -45
 Status: P
 =====
 ##b-
---P-
+-PO-
 ----
 ----
-Player: Alcebiades
-Score: -145
+Player: GABRIELO
+Score: -60
+Status: P
+=====
+##b-
+-#O-
+----
+----
+Player: GABRIELO
+Score: -75
+Status: P
+=====
+##b-
+-#P-
+----
+----
+Player: GABRIELO
+Score: -75
 Status: P
 =====
 ##P-
---#-
+-##-
 ----
 ----
-Player: Alcebiades
-Score: -160
+Player: GABRIELO
+Score: -90
 Status: P
 =====
 #Pb-
---#-
+-##-
 ----
 ----
-Player: Alcebiades
-Score: -175
+Player: GABRIELO
+Score: -105
 Status: P
 =====
 P#b-
---#-
+-##-
 ----
 ----
-Player: Alcebiades
-Score: 810
+Player: GABRIELO
+Score: 880
 Status: W
